@@ -1,4 +1,5 @@
 const input = require("scanline");
+const add = require("./add");
 
 async function addUI() {
   let sp = {
@@ -30,8 +31,8 @@ async function addUI() {
   }
   sp.数量 = parseInt(await input("请输入你的商品数量: "));
   sp.入库时间 = parseInt(new Date().getTime() / 1000);
-
-  return sp;
+  
+  add(sp);
 }
 
 module.exports = addUI;
