@@ -22,6 +22,7 @@ async function addUI() {
   for (let [k, v] of Object.entries(zl)) {
     console.log(k, "\t", v);
   }
+  console.log("非1-5情况均为: 其他种类")
   let select = await input("请输入你的商品种类: ");
   if (zl[select] === undefined) {
     // 如果用户选择的内容不存在的话则为其他种类
