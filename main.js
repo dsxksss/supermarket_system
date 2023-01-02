@@ -3,9 +3,11 @@ const input = require("scanline");
 const showUI = require("./ui");
 const addUI = require("./addUi");
 const dbInit = require("./dbInit");
+const selectUI = require("./selectUI");
 
 const menu = {
   "1": addUI,
+  "2": selectUI,
 };
 
 (async () => {

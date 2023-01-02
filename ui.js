@@ -1,8 +1,7 @@
 function UI() {
   const options = {
     "1": "录入信息",
-    "2": "修改信息",
-    "3": "删除信息",
+    "2": "查找信息",
   };
   console.log("*******************");
   for (let [k, v] of Object.entries(options)) {
