@@ -1,11 +1,13 @@
 const input = require("scanline");
 const addUI = require("./addUi");
 const selectUI = require("./selectUI");
+const deleteUI = require("./deleteUI");
 
 async function UI() {
   const options = {
     "1": ["录入信息", addUI],
     "2": ["查找信息", selectUI],
+    "3":["删除信息",deleteUI]
   };
 
   console.log("*******************");
