@@ -1,5 +1,5 @@
 const input = require("scanline");
-const add = require("./add");
+const add = require("../functions/add");
 
 async function addUI() {
   let sp = {

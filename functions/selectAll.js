@@ -1,4 +1,4 @@
-const connection = require("./connection");
+const connection = require("../db/connection");
 
 function selectAll() {
   connection.query("select * from product", function (error, products) {

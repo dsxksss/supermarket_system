@@ -1,4 +1,4 @@
-const connection = require("./connection");
+const connection = require("../db/connection");
 
 async function add(sp) {
   connection.query(`insert into product values(?,?,?,?,?)`, [

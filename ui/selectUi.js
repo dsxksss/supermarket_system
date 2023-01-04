@@ -1,6 +1,6 @@
 const input = require("scanline");
-const selectAll = require("./selectAll");
-const selectOne = require("./selectOne");
+const selectAll = require("../functions/selectAll");
+const selectOne = require("../functions/selectOne");
 
 async function selectUI() {
   const options = {
