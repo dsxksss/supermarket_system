@@ -1,10 +1,11 @@
 const input = require("scanline");
 const connection = require("../db/connection");
 const checkProductExists = require("./checkProductExist");
+const menu = require("../functions/menu");
 
 async function changeAll() {
   const name = await input("请输入想要修改的商品名称: ");
-  checkProductExists(name)
+  checkProductExists(name);
 
   let sp = {
     "名称": "",
@@ -12,29 +13,20 @@ async function changeAll() {
     "种类": "",
     "数量": 0,
   };
-  const zl = {
-    "1": "食物",
-    "2": "服装",
-    "3": "工具",
-    "4": "生活用品",
-    "5": "电子产品",
-  };
+  const zl = [
+    "食物",
+    "服装",
+    "工具",
+    "生活用品",
+    "电子产品",
+    "其他种类",
+  ];
 
   sp.名称 = await input("请输入该商品的新名称: ");
   sp.价格 = await input("请输入该商品的新价格: ");
 
-  for (let [k, v] of Object.entries(zl)) {
-    console.log(k, "\t", v);
-  }
-  console.log("非1-5情况均为: 其他种类");
-  let select = await input("请选择该商品的新种类: ");
-  if (zl[select] === undefined) {
-    // 如果用户选择的内容不存在的话则为其他种类
-    sp.种类 = "其他种类";
-  } else {
-    // 否则为用户选择内容对应的种类
-    sp.种类 = zl[select];
-  }
+  let select = await menu(zl, "请选择你的商品类型: \n");
+  sp.种类 = select.text;
 
   sp.数量 = await input("请输入该商品的新数量: ");
 
