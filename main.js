@@ -1,6 +1,6 @@
 // 导入
-const showUI = require("./ui/ui");
 const dbInit = require("./db/dbInit");
+const routerInit = require("./router/routerInit");
 
 dbInit(); // 初始化数据库
-showUI(); // 显示界面
+routerInit(); // 初始化路由
