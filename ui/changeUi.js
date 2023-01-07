@@ -1,13 +1,9 @@
-const changeAll = require("../functions/changeAll")
 const menu = require("../functions/menu");
+const changeOption = require("../router/options/changeOption");
 
 async function changeUI() {
-  const options = {
-    "修改单个商品全部信息":changeAll,
-  };
-  
-  const select = await menu(Object.keys(options));
-  options[select.text]();
+  const select = await menu(Object.keys(changeOption));
+  goTo(select.text);
 }
 
 module.exports = changeUI;
