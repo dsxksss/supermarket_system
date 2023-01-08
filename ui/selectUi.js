@@ -1,4 +1,4 @@
-const menu = require("../functions/menu");
+const menu = require("./menu");
 const selectOption = require("../router/options/selectOption");
 
 async function selectUI() {

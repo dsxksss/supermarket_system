@@ -1,7 +1,7 @@
 const input = require("scanline");
 const connection = require("../db/connection");
 const checkProductExists = require("./checkProductExist");
-const menu = require("../functions/menu");
+const menu = require("../ui/menu");
 
 async function changeAll() {
   const name = await input("请输入想要修改的商品名称: ");
