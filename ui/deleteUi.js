@@ -1,4 +1,4 @@
-const menu = require("../functions/menu");
+const menu = require("./menu");
 const deleteOption = require("../router/options/deleteOption");
 
 async function deleteUI() {

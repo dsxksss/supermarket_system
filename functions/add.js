@@ -1,5 +1,5 @@
 const input = require("scanline");
-const menu = require("../functions/menu");
+const menu = require("../ui/menu");
 const connection = require("../db/connection");
 
 async function add() {
