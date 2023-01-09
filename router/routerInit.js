@@ -8,11 +8,11 @@ function routerInit() {
       console.log("该路径无效!!!");
       process.exit(2);
     } else {
-      routerMap.get(where)();
       if (where !== "上一页") routerPath.push(where);
+      routerMap.get(where)();
     }
   };
-  
+
   global.goBack = function () {
     console.clear();
     routerPath.pop();
@@ -27,8 +27,6 @@ function routerInit() {
   for (let [k, v] of Object.entries(maps)) {
     routerMap.set(k, v);
   }
-
-  goTo("主菜单");
 }
 
 module.exports = routerInit;
