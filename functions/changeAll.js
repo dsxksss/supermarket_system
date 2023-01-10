@@ -36,9 +36,9 @@ async function changeAll() {
     "update product set 名称=?,价格=?,种类=?,数量=? where 名称=?",
     [
       sp["名称"],
-      sp["价格"],
+      parseFloat(sp["价格"]),
       sp["种类"],
-      sp["数量"],
+      parseInt(sp["数量"]),
       name,
     ],
     (error, _) => {

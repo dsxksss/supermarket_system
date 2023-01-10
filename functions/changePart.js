@@ -6,8 +6,10 @@ const connection = require("../db/connection");
 
 async function changePart() {
   showPath();
+
   const name = await input("请输入想要修改的商品名称: ");
   const oldProduct = await checkProductExist(name);
+
   let sp = {
     "名称": "",
     "价格": 0,
@@ -22,13 +24,13 @@ async function changePart() {
     "电子产品",
     "其他种类",
   ];
+
   const checkboxSelect = await checkBox(
     Object.keys(sp),
-    "请选择你要修改的字段:\n",
+    "请选择你要修改的字段(按下空格选择,按a全选,按回车确认你的选择):\n",
   );
   sp = oldProduct;
 
-  console.log(checkboxSelect.selects);
   for (let select of checkboxSelect.selects) {
     if (select === "种类") {
       const menuSelect = await menu(zl, "请选择你的商品类型: \n");

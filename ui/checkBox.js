@@ -7,7 +7,7 @@ function checkBox(choices, msg = "请勾选以下功能(按下空格选择,按a�
     // 菜单类型：
     // input, number, confirm, list, rawlist,
     // expand, checkbox, password,editor
-    type: "checkbox", // 列表类型
+    type: "checkbox", // 复选框类型
     message: msg, // 提示消息
     choices: choices,
     prefix: "", // 消息前缀
