@@ -1,13 +1,13 @@
 const input = require("scanline");
 const connection = require("../db/connection");
-const checkProductExists = require("./checkProductExist");
+const checkProductExist = require("./checkProductExist");
 const menu = require("../ui/menu");
 
 async function changeAll() {
   showPath();
 
   const name = await input("请输入想要修改的商品名称: ");
-  checkProductExists(name);
+  checkProductExist(name);
 
   let sp = {
     "名称": "",
@@ -46,7 +46,7 @@ async function changeAll() {
         console.log("修改商品信息失败", error);
         process.exit(1);
       }
-      console.log("修改商品信息成功");
+      console.log("修改商品全部信息成功");
     },
   );
 
