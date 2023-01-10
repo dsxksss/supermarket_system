@@ -1,7 +1,7 @@
 const connection = require("../db/connection");
 
-function checkProductExist(name){
-    connection.query(
+function checkProductExist(name) {
+  connection.query(
     "select * from product where 名称=?",
     [name],
     (error, products) => {

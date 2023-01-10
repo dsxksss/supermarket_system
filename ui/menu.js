@@ -1,8 +1,7 @@
 const inquirer = require("inquirer");
-const path = require("./path");
 
 function menu(choices, msg = "请选择以下功能:\n") {
-  path();
+  showPath();
   return inquirer.prompt({
     // 变量值名称
     name: "text",

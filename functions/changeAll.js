@@ -4,6 +4,8 @@ const checkProductExists = require("./checkProductExist");
 const menu = require("../ui/menu");
 
 async function changeAll() {
+  showPath();
+
   const name = await input("请输入想要修改的商品名称: ");
   checkProductExists(name);
 
