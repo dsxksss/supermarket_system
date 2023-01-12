@@ -3,6 +3,7 @@ const input = require("scanline");
 const checkProductExist = require("./checkProductExist");
 
 async function deleteOne() {
+  showPath();
   const name = await input("请输入你想要删除的商品名称: ");
   checkProductExist(name);
 

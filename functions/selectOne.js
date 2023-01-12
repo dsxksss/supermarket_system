@@ -2,6 +2,7 @@ const input = require("scanline");
 const connection = require("../db/connection");
 
 async function selectOne() {
+  showPath();
   const name = await input("请输入你想要查找的名称: ");
   connection.query(
     "select * from product where 名称=?",

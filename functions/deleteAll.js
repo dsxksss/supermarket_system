@@ -2,7 +2,10 @@ const connection = require("../db/connection");
 const input = require("scanline");
 
 async function deleteAll() {
-  const yn = await input("\033[31m你确定要删除全部商品信息吗!?[y确认/n取消]\033[0m");
+  showPath();
+  const yn = await input(
+    "\033[31m你确定要删除全部商品信息吗!?[y确认/n取消]\033[0m",
+  );
   if (yn === "y" || yn === "Y") {
     connection.query("truncate table product", (error, _) => {
       if (error) {

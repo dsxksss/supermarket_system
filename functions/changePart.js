@@ -1,13 +1,14 @@
+const checkBox = require("../ui/checkBox");
 const input = require("scanline");
-const connection = require("../db/connection");
 const checkProductExist = require("./checkProductExist");
 const menu = require("../ui/menu");
+const connection = require("../db/connection");
 
-async function changeAll() {
+async function changePart() {
   showPath();
 
   const name = await input("请输入想要修改的商品名称: ");
-  checkProductExist(name);
+  const oldProduct = await checkProductExist(name);
 
   let sp = {
     "名称": "",
@@ -24,13 +25,20 @@ async function changeAll() {
     "其他种类",
   ];
 
-  sp.名称 = await input("请输入该商品的新名称: ");
-  sp.价格 = await input("请输入该商品的新价格: ");
+  const checkboxSelect = await checkBox(
+    Object.keys(sp),
+    "请选择你要修改的字段(按下空格选择,按a全选,按回车确认你的选择):\n",
+  );
+  sp = oldProduct;
 
-  let select = await menu(zl, "请选择你的商品类型: \n");
-  sp.种类 = select.text;
-
-  sp.数量 = await input("请输入该商品的新数量: ");
+  for (let select of checkboxSelect.selects) {
+    if (select === "种类") {
+      const menuSelect = await menu(zl, "请选择你的商品类型: \n");
+      sp.种类 = menuSelect.text;
+      continue;
+    }
+    sp[select] = await input(`请输入该商品的新${select}: `);
+  }
 
   connection.query(
     "update product set 名称=?,价格=?,种类=?,数量=? where 名称=?",
@@ -46,11 +54,11 @@ async function changeAll() {
         console.log("修改商品信息失败", error);
         process.exit(1);
       }
-      console.log("修改商品全部信息成功");
+      console.log("修改商品部分信息成功");
     },
   );
 
   connection.end();
 }
 
-module.exports = changeAll;
+module.exports = changePart;

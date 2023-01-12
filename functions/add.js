@@ -3,6 +3,7 @@ const menu = require("../ui/menu");
 const connection = require("../db/connection");
 
 async function add() {
+  showPath();
   let sp = {
     "名称": "",
     "价格": 0,

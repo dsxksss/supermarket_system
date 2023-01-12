@@ -1,14 +1,13 @@
 const inquirer = require("inquirer");
 
-function menu(choices, msg = "请选择以下功能:\n") {
-  showPath();
+function checkBox(choices, msg = "请勾选以下功能(按下空格选择,按a全选,按回车确认你的选择):\n") {
   return inquirer.prompt({
     // 变量值名称
-    name: "text",
+    name: "selects",
     // 菜单类型：
     // input, number, confirm, list, rawlist,
     // expand, checkbox, password,editor
-    type: "list", // 列表类型
+    type: "checkbox", // 复选框类型
     message: msg, // 提示消息
     choices: choices,
     prefix: "", // 消息前缀
@@ -16,4 +15,4 @@ function menu(choices, msg = "请选择以下功能:\n") {
   });
 }
 
-module.exports = menu;
+module.exports = checkBox;
