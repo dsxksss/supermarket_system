@@ -43,7 +43,7 @@ function payQ() {
 
             // 累加购买商品花费的价钱
             allPrice += product["价格"] * count;
-
+            
             // 增加到已经购买的商品列表里，方便后续更改数据库内的商品数量
             productList.push({
               ...product,
@@ -54,31 +54,34 @@ function payQ() {
           }
         }
       }
+      
+      if (productList.length <= 0) {
+        console.log("您没有选择任何商品,取消本次支付");
+        process.exit(2);
+      }
 
-      console.log(`最终花费的金额是: ${allPrice}`);
       if (
         (await input("请选择是否支付[y确认支付/n取消支付] :")).toLowerCase() ===
-          "y"
-      ) {
+        "y"
+        ) {
+        console.clear()
         console.log(
-          `${new Date().getFullYear()}年${new Date().getMonth() + 1}月${
-            new Date().getDay()
-          }日 ${new Date().getHours()}:${new Date().getMinutes()}:${
-            new Date().getSeconds()
+          `${new Date().getFullYear()}年${new Date().getMonth() + 1}月${new Date().getDay()
+          }日${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()
           }`,
         );
-
         console.log("您购买了以下商品:");
         for (let p of productList) {
           console.log(
-            `${p["名称"]}*${p["购买数量"]}:${"\t"}${p["花费价钱"]}￥`,
+            `${p["名称"]}*${p["购买数量"]}:${"\t"}${p["花费价钱"].toFixed(3)}￥`,
           );
         }
-        console.log(`总消费: ${allPrice}￥`);
+        console.log(`总消费: ${allPrice.toFixed(3)}￥`);
         console.log("欢迎下次光临~bye");
         result(productList);
       } else {
         console.log("您取消了支付");
+        process.exit(2)
       }
     });
   });
@@ -86,7 +89,6 @@ function payQ() {
 
 async function pay() {
   let list = await payQ();
-  console.log(list);
   for (let p of list) {
     changeCount(p["名称"], p["数量"] - p["购买数量"]);
   }
