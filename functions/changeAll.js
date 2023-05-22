@@ -18,7 +18,7 @@ async function changeAll() {
       inventory: newProduct["数量"],
     }
   })
-
+  console.log(`${"\033[32m"}该商品全部信息已修改成功${"\033[0m"}`);
   
 }
 
