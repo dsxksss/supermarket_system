@@ -2,11 +2,11 @@
 价格
 
 种类{  
-    -  食物
-    -  服装
-    -  工具
-    -  生活用品
-    -  电子产品
+    -  食物 FOOD
+    -  服装 CLOTHING
+    -  工具 TOOL
+    -  生活用品 DAILY
+    -  电子产品 ELECTRONICE
     }
 
 数量

@@ -1,7 +1,27 @@
 {
   "dependencies": {
+    "@prisma/client": "^4.14.1",
     "inquirer": "8.0.0",
     "mysql": "^2.18.1",
     "scanline": "^1.0.3"
-  }
+  },
+  "name": "supermarket_system",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsxksss/supermarket_system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsxksss/supermarket_system/issues"
+  },
+  "homepage": "https://github.com/dsxksss/supermarket_system#readme",
+  "description": ""
 }
