@@ -1,5 +1,4 @@
 const checkBox = require("../ui/checkBox");
-const connection = require("../db/connection");
 const changeCount = require("./changeCount");
 const input = require("scanline");
 

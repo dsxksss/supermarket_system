@@ -1,13 +1,11 @@
-const connection = require("../db/connection");
+const checkProductExist = require("./checkProductExist");
 
-function changeCount(productName, count) {
-  connection.query("update product set 数量=? where 名称=?", [
-    count,
-    productName,
-  ], (error, _) => {
-    if (error) {
-      console.log("修改商品数量出错!", error);
-      process.exit(1);
+async function changeCount(productName, count) {
+  await checkProductExist(productName)
+  await pirsmaClient.product.update({
+    where: { name: productName },
+    data: {
+      inventory: count
     }
   });
 }
