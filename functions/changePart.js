@@ -21,7 +21,7 @@ async function changePart() {
     if (select === "商品名称") {
       newProduct["name"] = await input("请输入该商品的新名称: ")
     } else if (select === "商品种类") {
-      const menuSelect = await menu(Object.keys(productType), "请选择你要修改的商品类型: \n");
+      const menuSelect = await menu(Object.keys(productType), "请选择你要修改的商品类型: \n",false);
       newProduct["type"] = productType[menuSelect.text];
       continue;
     } else if (select === "商品价格") {
