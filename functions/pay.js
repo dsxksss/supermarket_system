@@ -16,9 +16,14 @@ async function payQ() {
     console.log("\033[31m商品信息为空\033[0m");
   }
 
-  let productsName = products.map((product) => product["name"]);
-  const select = await checkBox(                                                                                               
-    productsName,
+  let lastProduct = products.filter((product) => product["inventory"] > 0);
+
+  if (lastProduct.length <= 0) {
+    console.log("\033[31m商品库存为空\033[0m");
+    process.exit(1);
+  }
+  const select = await checkBox(
+    lastProduct,
     "请勾选你想要购买的商品(按下空格选择,按a全选,按回车确认你的选择): \n",
   );
 
@@ -31,6 +36,7 @@ async function payQ() {
     for (let s of select.selects) {
       // 如果符合用户选择的商品的话，执行以下操作
       if (product["name"] === s) {
+        console.log(`商品：${product["name"]}(剩余库存为: ${product["inventory"]})`);
         // 询问用户该商品的购买数量
         const count = parseInt(
           await input(`想要购买${product["name"]}的数量: `),
@@ -89,7 +95,7 @@ async function payQ() {
 async function pay() {
   let list = await payQ();
   for (let p of list) {
-    changeCount(p["name"], parseInt(p["inventory"] )- p["购买数量"]);
+    changeCount(p["name"], parseInt(p["inventory"]) - p["购买数量"]);
   }
 }
 
