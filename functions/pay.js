@@ -16,14 +16,14 @@ async function payQ() {
     console.log("\033[31m商品信息为空\033[0m");
   }
 
-  let lastProduct = products.filter((product) => product["inventory"] > 0);
+  let canPayProducts = products.filter((product) => product["inventory"] > 0);
 
-  if (lastProduct.length <= 0) {
+  if (canPayProducts.length <= 0) {
     console.log("\033[31m商品库存为空\033[0m");
     process.exit(1);
   }
   const select = await checkBox(
-    lastProduct,
+    canPayProducts,
     "请勾选你想要购买的商品(按下空格选择,按a全选,按回车确认你的选择): \n",
   );
 
