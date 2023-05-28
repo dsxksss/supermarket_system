@@ -80,7 +80,7 @@ async function payQ() {
     console.log("您购买了以下商品:");
     for (let p of productList) {
       console.log(
-        `${p["name"]}*${p["购买数量"]}:  ${p["花费价钱"].toFixed(3)}￥`,
+        `${p["name"]}*${p["购买数量"]}:  ${p["price"].toFixed(3)}￥`,
       );
     }
     console.log(`总消费:  ${allPrice.toFixed(3)}￥`);
